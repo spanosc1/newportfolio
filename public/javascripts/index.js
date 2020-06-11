@@ -7,12 +7,14 @@ $(window).ready(function() {
     var message = $("#formMessage").val().trim();
 
     // regexp
-	  var testName = new RegExp(/^.{2,}/);
     var testEmail = new RegExp(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-z]{2,4}$/);
-    var testMessage = new RegExp(/^.{2,}/);
 
-    if (testName.test(name) && testEmail.test(email) && testMessage.test(message)) {
-      console.log(name, email, message);
+    if (name != "" && testEmail.test(email) && message != "") {
+      $("#responseMessage").text("");
+      $("#formName").prop("disabled", true);
+      $("#formEmail").prop("disabled", true);
+      $("#formMessage").prop("disabled", true);
+      $(".contactSubmit").prop("disabled", true);
       $.post('/message',
       {
         name,
@@ -20,8 +22,23 @@ $(window).ready(function() {
         message
       },
       function(data, status) {
-        console.log(data, status);
+        if(data.message == "success")
+        {
+          $("#responseMessage").text("Thanks for reaching out! I'll get back to you as soon as I can.");
+        }
+        else
+        {
+          $("#formName").prop("disabled", false);
+          $("#formEmail").prop("disabled", false);
+          $("#formMessage").prop("disabled", false);
+          $(".contactSubmit").prop("disabled", false);
+          $("#responseMessage").text("There was an error, please try again later or contact me directly at spanosc1@tcnj.edu.");
+        }
       });
+    }
+    else
+    {
+      $("#responseMessage").text("Please fill out all fields and enter a valid email address.");
     }
 
   });
@@ -386,6 +403,9 @@ $(window).ready(function() {
     setTimeout(function() {
       $(".section4:eq(4)").removeClass("section4Down");
     }, 700);
+    setTimeout(function() {
+      $(".section4:eq(5)").removeClass("section4Down");
+    }, 800);
   }
 
   function hideSection4Down() {

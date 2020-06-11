@@ -416,6 +416,11 @@ a {
   color: #ffffff;
 }
 
+#responseMessage {
+  color: #ffffff;
+  height: 30px;
+}
+
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #2b2b2b;
   opacity: 1; /* Firefox */
