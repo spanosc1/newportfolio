@@ -471,6 +471,10 @@ button:focus {
   opacity: 0;
 }
 
+.mobileViewLink {
+  display: none;
+}
+
 @media only screen and (max-width: 1400px) {
   .scrollContainer {
     right: 47%;
@@ -695,5 +699,9 @@ button:focus {
 
   .contactFormContainer {
     height: 70%;
+  }
+
+  .mobileViewLink {
+    display: block;
   }
 }
