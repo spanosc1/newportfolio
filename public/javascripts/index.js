@@ -88,7 +88,6 @@ $(window).ready(function() {
 
       if ( yDiff > 40 ) {
           /* up swipe */ 
-          alert(yDiff);
         scrollDown();
       } else if( yDiff < -40 ) { 
           /* down swipe */
