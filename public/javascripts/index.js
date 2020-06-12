@@ -86,10 +86,10 @@ $(window).ready(function() {
 
       console.log(yDiff);
 
-      if ( yDiff > 40 ) {
+      if ( yDiff > 20 ) {
           /* up swipe */ 
         scrollDown();
-      } else if( yDiff < -40 ) { 
+      } else if( yDiff < -20 ) { 
           /* down swipe */
         scrollUp();
       }
