@@ -1,4 +1,8 @@
 $(window).ready(function() {
+  var scrolling = false;
+
+  var current = 1;
+
   $(".contactFormContainer").submit(function(e) {
     e.preventDefault();
 
@@ -43,10 +47,6 @@ $(window).ready(function() {
 
   });
 
-  var scrolling = false;
-
-  var current = 1;
-
   setTimeout(function() {
     $(".landingTitle").addClass("landingTitleAnimated");
     transform1();
@@ -56,73 +56,122 @@ $(window).ready(function() {
     $(".landingSub").addClass("landingSubAnimated");
   }, 500);
 
+  document.addEventListener('touchstart', handleTouchStart, false);        
+  document.addEventListener('touchmove', handleTouchMove, false);
+
+  var xDown = null;                                                        
+  var yDown = null;
+
+  function getTouches(evt) {
+    return evt.touches ||             // browser API
+          evt.originalEvent.touches; // jQuery
+  }                                                     
+
+  function handleTouchStart(evt) {
+      const firstTouch = getTouches(evt)[0];                                      
+      xDown = firstTouch.clientX;                                      
+      yDown = firstTouch.clientY;                                      
+  };                                                
+
+  function handleTouchMove(evt) {
+      if ( ! xDown || ! yDown ) {
+          return;
+      }
+
+      var xUp = evt.touches[0].clientX;                                    
+      var yUp = evt.touches[0].clientY;
+
+      var xDiff = xDown - xUp;
+      var yDiff = yDown - yUp;
+
+      console.log(yDiff);
+
+      if ( yDiff > 40 ) {
+          /* up swipe */ 
+          alert(yDiff);
+        scrollDown();
+      } else if( yDiff < -40 ) { 
+          /* down swipe */
+        scrollUp();
+      }
+      /* reset values */
+      xDown = null;
+      yDown = null;                                             
+  };
+
   window.addEventListener("wheel", event => {
-    console.log(event.deltaY);
     if(!scrolling)
     {
       //going down
       if(event.deltaY > 4)
       {
-        scrolling = true;
-        switch (current) {
-          case 1: //from first
-            current = 2;
-            transform2();
-            hideSection1Up();
-            showSection2Up();
-            break;
-          case 2: //from second
-            current = 3;
-            transform3();
-            hideSection2Up();
-            showSection3Up();
-            break;
-          case 3: //from third
-            current = 4;
-            transform4();
-            hideSection3Up();
-            showSection4Up();
-            break;
-          default:
-            break;
-        }
-        setTimeout(function() {
-          scrolling = false;
-        }, 1500);
+        scrollDown();
       }
       //going up
       else if(event.deltaY < -4)
       {
-        console.log(current);
-        scrolling = true;
-        switch (current) {
-          case 2: //from first
-            current = 1;
-            transform1();
-            hideSection2Down();
-            showSection1Up();
-            break;
-          case 3: //from third
-            current = 2;
-            transform2();
-            hideSection3Down();
-            showSection2Down();
-            break;
-          case 4: //from fourth
-            current = 3;
-            transform3();
-            hideSection4Down();
-            showSection3Down();
-            break;
-          default:
-            break;
-        }
-        setTimeout(function() {
-          scrolling = false;
-        }, 1500);
+        scrollUp();
       }
     }
   });
+
+  function scrollDown() {
+    scrolling = true;
+    switch (current) {
+      case 1: //from first
+        current = 2;
+        transform2();
+        hideSection1Up();
+        showSection2Up();
+        break;
+      case 2: //from second
+        current = 3;
+        transform3();
+        hideSection2Up();
+        showSection3Up();
+        break;
+      case 3: //from third
+        current = 4;
+        transform4();
+        hideSection3Up();
+        showSection4Up();
+        break;
+      default:
+        break;
+    }
+    setTimeout(function() {
+      scrolling = false;
+    }, 1500);
+  }
+
+  function scrollUp() {
+    scrolling = true;
+    switch (current) {
+      case 2: //from first
+        current = 1;
+        transform1();
+        hideSection2Down();
+        showSection1Up();
+        break;
+      case 3: //from third
+        current = 2;
+        transform2();
+        hideSection3Down();
+        showSection2Down();
+        break;
+      case 4: //from fourth
+        current = 3;
+        transform3();
+        hideSection4Down();
+        showSection3Down();
+        break;
+      default:
+        break;
+    }
+    setTimeout(function() {
+      scrolling = false;
+    }, 1500);
+  }
 
   setInterval(function() {
     $(".scrollText").removeClass("scrollTextInvis");

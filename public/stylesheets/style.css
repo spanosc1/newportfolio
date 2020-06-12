@@ -194,7 +194,7 @@ a {
   width: calc(30% - 40px);
 }
 
-#resumeLink {
+.resumeLink {
   color: #CB2526;
 }
 
@@ -245,7 +245,7 @@ a {
 }
 
 .portfolioItem {
-  height: 290px;
+  height: 90%;
   width: 30%;
   background-size: cover;
   overflow: hidden;
@@ -297,7 +297,7 @@ a {
 }
 
 .portfolioOverlay:hover>.portfolioItemTitle {
-  transform: translateY(-110%);
+  transform: translateY(-130%);
 }
 
 .portfolioOverlay:hover>.portfolioItemDesc {
@@ -313,7 +313,7 @@ a {
 }
 
 .portfolioItemTitle {
-  font-size: 3em;
+  font-size: 2.5em;
   text-shadow: 2px 2px 0px #CB2526;
   transition: all 0.6s cubic-bezier(0.19, 1, 0.21, 1);
 }
@@ -469,4 +469,231 @@ button:focus {
   transition: all 0.6s cubic-bezier(0.19, 1, 0.21, 1);
   transform: translateX(250px);
   opacity: 0;
+}
+
+@media only screen and (max-width: 1400px) {
+  .scrollContainer {
+    right: 47%;
+    top: 84vh;
+  }
+
+  .linkImg {
+    height: 22px;
+    width: 22px;
+    margin: 7px;
+  }
+
+  .landingTitle {
+    font-size: 8em;
+  }
+
+  .landingSub {
+    margin-top: 8px;
+    width: 434px;
+    font-size: 1.0em;
+  }
+
+  .aboutDescTitle {
+    font-size: 3em;
+  }
+
+  .aboutDescBody {
+    margin: 10px 0px;
+  }
+
+  .portfolioContentContainer {
+    width: calc(100% - 70px);
+  }
+
+  .portfolioTitle {
+    font-size: 3em;
+  }
+
+  .portfolioItem {
+    height: 90%;
+  }
+
+  .portfolioItemTitle {
+    font-size: 2em;
+  }
+
+  .portfolioItemDesc {
+    line-height: 18px;
+  }
+
+  .contactTitle {
+    font-size: 3em;
+  }
+
+  .contactInput {
+    font-size: 1em;
+    margin: 10px 0px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .portfolioItemTitle {
+    font-size: 1.6em;
+  }
+
+  .portfolioOverlay:hover>.portfolioItemTitle {
+    transform: translateY(-150%);
+  }
+
+  .portfolioOverlay:hover>.portfolioButton {
+    transform: translateY(180%);
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .transforming1 {
+    transition: all 1.2s cubic-bezier(0.19, 1, 0.21, 1);
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 0% 70%);
+  }
+
+  .transforming2 {
+    transition: all 1.2s cubic-bezier(0.19, 1, 0.21, 1);
+    clip-path: polygon(0 70%, 100% 70%, 100% 100%, 0% 100%);
+  }
+
+  .transforming3 {
+    transition: all 1.2s cubic-bezier(0.19, 1, 0.21, 1);
+    clip-path: polygon(0 0, 60% 0, 60% 100%, 0% 100%);
+  }
+
+  .transforming4 {
+    transition: all 1.2s cubic-bezier(0.19, 1, 0.21, 1);
+    clip-path: polygon(0 20%, 100% 20%, 100% 100%, 0% 100%);
+  }
+
+  .landingTitle {
+    font-size: 4em;
+  }
+
+  .landingTitle>p {
+    line-height: 60px;
+  }
+
+  .landingSub {
+    width: 220px;
+  }
+
+  .scrollContainer {
+    flex-direction: column-reverse;
+    right: 45%;
+    top: 74vh;
+  }
+
+  .scrollText {
+    transform: rotate(-90deg);
+  }
+
+  .scrollIcon {
+    transform: rotate(180deg);
+  }
+
+  .aboutContent {
+    flex-direction: column;
+  }
+
+  .aboutDesc {
+    display: flex;
+    justify-content: center;
+    height: 70%;
+    width: 90%;
+  }
+
+  .aboutDescTitle {
+    font-size: 1.4em;
+    width: 30%;
+  }
+
+  .aboutDescBody {
+    width: 100%;
+    font-size: 0.8em;
+    line-height: 15px;
+    margin: 6px 0px;
+  }
+
+  .aboutSkills {
+    height: 30%;
+    width: 90%;
+    flex-direction: row;
+  }
+
+  .aboutSkillList {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+  }
+
+  .portfolioTitleContainer {
+    height: auto;
+  }
+
+  .portfolioTitle {
+    font-size: 2em;
+  }
+
+  .portfolioContentContainer {
+    padding: 0px 20px;
+    height: 85%;
+  }
+
+  .portfolioRow {
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .portfolioItem {
+    height: 30%;
+    width: 100%;
+  }
+
+  .portfolioItemTitle {
+    font-size: 1.3em;
+  }
+
+  .portfolioItemDesc {
+    font-size: 0.8em;
+    line-height: 12px;
+  }
+
+  .portfolioOverlay:hover>.portfolioItemTitle {
+    transform: translateY(-300%);
+  }
+
+  .portfolioOverlay:hover>.portfolioItemDesc {
+    opacity: 1;
+    transform: translateY(0%);
+    transition: all 0.6s cubic-bezier(0.19, 1, 0.21, 1) 0.3s;
+  }
+
+  .portfolioOverlay:hover>.portfolioButton {
+    opacity: 1;
+    transform: translateY(300%);
+    transition: all 0.6s cubic-bezier(0.19, 1, 0.21, 1) 0.6s;
+  }
+
+  .contactTitle {
+    font-size: 1.8em;
+  }
+
+  .contactInput {
+    width: 70%;
+  }
+
+  .contactSubmit {
+    padding: 10px 30px;
+    font-size: 1em;
+  }
+
+  .contactTitleContainer {
+    height: 15%;
+    align-items: center;
+  }
+
+  .contactFormContainer {
+    height: 70%;
+  }
 }
